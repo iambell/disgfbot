@@ -3,9 +3,10 @@ import asyncio
 import os
 import random
 import datetime
+from zoneinfo import ZoneInfo  # 日本時間取得用
 
 # ── 環境変数から読み込む ──
-TOKEN     = "MTM3MDE5NDA2ODE2ODExODMwMw.GH-peK.yTMmSjCdcpsgOkRVAmJQM8COC7MjQyWPJb4GiU"
+TOKEN     = MTM3MDE5NDA2ODE2ODExODMwMw.GH-peK.yTMmSjCdcpsgOkRVAmJQM8COC7MjQyWPJb4GiU
 TARGET_ID = 659997861429379074
 
 # ── 時間帯ごとのメッセージリスト ──
@@ -53,15 +54,18 @@ client  = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     user = await client.fetch_user(TARGET_ID)
-    print(f"[{datetime.datetime.now():%H:%M:%S}] ログイン成功: {client.user}")
+    print(f"[{datetime.datetime.now(ZoneInfo('Asia/Tokyo')):%Y-%m-%d %H:%M:%S}] ログイン成功: {client.user}")
     while True:
-        now = datetime.datetime.now()
+        # 日本時間で現在時刻を取得
+        now = datetime.datetime.now(ZoneInfo("Asia/Tokyo"))
         word_list = choose_list_by_hour(now.hour)
         message   = random.choice(word_list)
-        await user.send(message)
-        # ランダム待機（10～20分）
+        if message:
+            await user.send(message)
+            print(f"[{now:%H:%M:%S}] Sent: {message!r}")
+        # 10～20分のランダム待機
         wait_sec = random.randint(600, 1200)
-        print(f"[{now:%H:%M:%S}] Sent: {message!r} → Next in {wait_sec//60}分{wait_sec%60}秒")
+        print(f"Next message in {wait_sec//60}分{wait_sec%60}秒…")
         await asyncio.sleep(wait_sec)
 
 client.run(TOKEN)
