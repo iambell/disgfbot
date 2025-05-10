@@ -6,7 +6,7 @@ import datetime
 from zoneinfo import ZoneInfo  # 日本時間取得用
 
 # ── 環境変数から読み込む ──
-TOKEN     = MTM3MDE5NDA2ODE2ODExODMwMw.GH-peK.yTMmSjCdcpsgOkRVAmJQM8COC7MjQyWPJb4GiU
+TOKEN     = "MTM3MDE5NDA2ODE2ODExODMwMw.GH-peK.yTMmSjCdcpsgOkRVAmJQM8COC7MjQyWPJb4GiU"
 TARGET_ID = 659997861429379074
 
 # ── 時間帯ごとのメッセージリスト ──
