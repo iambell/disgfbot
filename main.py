@@ -5,11 +5,9 @@ import random
 import datetime
 from zoneinfo import ZoneInfo  # 日本時間取得用
 
-+ # ── 環境変数から読み込む ──
-+ import os
-+ 
-+ TOKEN     = os.getenv("DISCORD_TOKEN")
-+ TARGET_ID = int(os.getenv("TARGET_ID"))
+# ── 環境変数から読み込む ──
+TOKEN     = os.getenv("DISCORD_TOKEN")
+TARGET_ID = int(os.getenv("TARGET_ID"))
 
 # ── 時間帯ごとのメッセージリスト ──
 MORNING = [
