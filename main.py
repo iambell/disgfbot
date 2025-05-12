@@ -9,7 +9,7 @@ from zoneinfo import ZoneInfo  # 日本時間取得用
 + import os
 + 
 + TOKEN     = os.getenv("DISCORD_TOKEN")
-+ TARGET_ID = int(os.getenv("DISCORD_TARGET_ID"))
++ TARGET_ID = int(os.getenv("TARGET_ID"))
 
 # ── 時間帯ごとのメッセージリスト ──
 MORNING = [
