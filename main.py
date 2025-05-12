@@ -48,11 +48,11 @@ NIGHT = [
 ]
 
 def choose_list_by_hour(hour: int):
-    if 6 <= hour < 12:
+    if 6 <= hour < 10:
         return MORNING
-    if 12 <= hour < 18:
+    if 10 <= hour < 21:
         return AFTERNOON
-    if 18 <= hour < 24:
+    if 21 <= hour < 24:
         return EVENING
     return NIGHT
 
