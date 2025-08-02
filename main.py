@@ -72,7 +72,7 @@ async def on_ready():
             await user.send(message)
             print(f"[{now:%H:%M:%S}] Sent: {message!r}")
         # 10～20分のランダム待機
-        wait_sec = random.randint(600, 1200)
+        wait_sec = random.randint(300, 600)
         print(f"Next message in {wait_sec//60}分{wait_sec%60}秒…")
         await asyncio.sleep(wait_sec)
 
